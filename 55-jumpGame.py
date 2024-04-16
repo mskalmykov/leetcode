@@ -2,19 +2,17 @@ from typing import List
 
 class Solution:
     def canJump(self, nums: List[int]) -> bool:
-        reachable = {0}
+        maxReach = 0
         l = len(nums)
 
         for i in range(l):
-            if i not in reachable:
+            if i > maxReach:
                 return False
             
             n = nums[i]
-            if i + n >= l - 1:
+            maxReach = max(maxReach, i + n)
+            if maxReach >= l - 1:
                 return True
-            
-            for j in range(1, n + 1):
-                reachable.add(i + j)
 
         return True
 
