@@ -28,16 +28,12 @@ class Solution:
             n = oldNext
             cnt += 1
         
-#        head.next = tail
-
         if tail:
             head.next = self.reverseKGroup(tail, k)
         else:
             head.next = None
 
         return newHead
-
-
 
 print(Solution().reverseKGroup(linkedListFromArray([1,2,3,4,5]), 2))
 print(Solution().reverseKGroup(linkedListFromArray([1,2,3,4,5]), 3))
