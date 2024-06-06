@@ -7,16 +7,16 @@ class Solution:
         
     def sumNumbers(self, root: Optional[TreeNode]) -> int:
 
-        def helper(node: TreeNode, numStr: str) -> None:
-            t = numStr + str(node.val)
+        def helper(node: TreeNode, currentNum: int) -> None:
+            t = currentNum * 10 + node.val
             if not node.left and not node.right:
-                self.totalSum += int(t)
+                self.totalSum += t
             if node.left:
                 helper(node.left, t)
             if node.right:
                 helper(node.right, t)
 
-        helper(root, '')
+        helper(root, 0)
 
         return self.totalSum
 
