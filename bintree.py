@@ -25,14 +25,23 @@ class TreeNode:
 def treeFromList(nodes: List) -> TreeNode:
     if not nodes:
         return None
+
     d1 = deque(nodes)
+
     root = TreeNode(d1.popleft())
-    n = root
     d2 = deque([root])
+
     while len(d1) > 1:
         n = d2.popleft()
-        n.left = TreeNode(d1.popleft())
-        n.right = TreeNode(d1.popleft())
-        d2.append(n.left)
-        d2.append(n.right)
+
+        childVal = d1.popleft()
+        if childVal != None:
+            n.left = TreeNode(childVal)
+            d2.append(n.left)
+
+        childVal = d1.popleft()
+        if childVal != None:
+            n.right = TreeNode(childVal)
+            d2.append(n.right)
+
     return root
